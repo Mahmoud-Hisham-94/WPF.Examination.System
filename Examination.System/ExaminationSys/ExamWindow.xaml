@@ -1,0 +1,237 @@
+<Window x:Class="ExaminationSys.ExamWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExaminationSys"
+        mc:Ignorable="d"
+        Title="Exam Window" Height="700" Width="1000"
+        WindowStartupLocation="CenterOwner"
+        Background="#F5F5F5"
+        ResizeMode="NoResize">
+    
+    <Window.Resources>
+        <Style x:Key="QuestionTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#333"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+        
+        <Style x:Key="AnswerTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Foreground" Value="#555"/>
+            <Setter Property="Margin" Value="5,2"/>
+        </Style>
+        
+        <Style x:Key="NavigationButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#2196F3"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="4" 
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#1976D2"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#1565C0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="SubmitButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#4CAF50"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="6" 
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#45a049"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#3d8b40"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header with Timer and Progress -->
+        <Border Grid.Row="0" Background="#2E7D32" Padding="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Grid.Column="0">
+                    <TextBlock x:Name="ExamTitleText" 
+                              Text="Practice Exam" 
+                              FontSize="24" 
+                              FontWeight="Bold" 
+                              Foreground="White"/>
+                    <TextBlock x:Name="QuestionCounterText" 
+                              Text="Question 1 of 3" 
+                              FontSize="14" 
+                              Foreground="#E8F5E8"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                    <TextBlock Text="Time Remaining" 
+                              FontSize="12" 
+                              Foreground="#E8F5E8" 
+                              HorizontalAlignment="Center"/>
+                    <TextBlock x:Name="TimerText" 
+                              Text="60:00" 
+                              FontSize="20" 
+                              FontWeight="Bold" 
+                              Foreground="White" 
+                              HorizontalAlignment="Center"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Column="2" HorizontalAlignment="Right">
+                    <TextBlock Text="Progress" 
+                              FontSize="12" 
+                              Foreground="#E8F5E8" 
+                              HorizontalAlignment="Right"/>
+                    <ProgressBar x:Name="ProgressBar" 
+                                Value="33" 
+                                Maximum="100" 
+                                Width="150" 
+                                Height="8" 
+                                Background="#1B5E20" 
+                                Foreground="#4CAF50"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Main Content Area -->
+        <ScrollViewer Grid.Row="1" Margin="20" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <!-- Question Header -->
+                <TextBlock x:Name="QuestionHeaderText" 
+                          Text="Question Header" 
+                          Style="{StaticResource QuestionTextStyle}"
+                          FontSize="20"/>
+                
+                <!-- Question Body -->
+                <TextBlock x:Name="QuestionBodyText" 
+                          Text="Question Body" 
+                          Style="{StaticResource QuestionTextStyle}"
+                          FontSize="18"/>
+                
+                <!-- Marks -->
+                <TextBlock x:Name="MarksText" 
+                          Text="Marks: 1" 
+                          FontSize="14" 
+                          Foreground="#666" 
+                          Margin="0,0,0,20"/>
+                
+                <!-- Answer Options -->
+                <StackPanel x:Name="AnswerOptionsPanel" 
+                           Margin="0,0,0,20">
+                    <!-- Answer options will be dynamically generated here -->
+                </StackPanel>
+                
+                <!-- Correct Answer Display (for Practice Exam) -->
+                <Border x:Name="CorrectAnswerPanel" 
+                       Background="#E8F5E8" 
+                       BorderBrush="#4CAF50" 
+                       BorderThickness="1" 
+                       CornerRadius="4" 
+                       Padding="15" 
+                       Margin="0,10,0,20"
+                       Visibility="Collapsed">
+                    <StackPanel>
+                        <TextBlock Text="Correct Answer:" 
+                                  FontWeight="Bold" 
+                                  Foreground="#2E7D32" 
+                                  Margin="0,0,0,5"/>
+                        <TextBlock x:Name="CorrectAnswerText" 
+                                  Text="" 
+                                  Foreground="#333"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Navigation Controls -->
+        <Border Grid.Row="2" Background="#E8F5E8" Padding="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                    <Button x:Name="PreviousButton" 
+                           Content="← Previous" 
+                           Style="{StaticResource NavigationButtonStyle}"
+                           Click="PreviousButton_Click"
+                           IsEnabled="False"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <Button x:Name="NextButton" 
+                           Content="Next →" 
+                           Style="{StaticResource NavigationButtonStyle}"
+                           Click="NextButton_Click"/>
+                    <Button x:Name="SubmitButton" 
+                           Content="Submit Exam" 
+                           Style="{StaticResource SubmitButtonStyle}"
+                           Click="SubmitButton_Click"
+                           Visibility="Collapsed"/>
+                </StackPanel>
+                
+                <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button x:Name="ExitButton" 
+                           Content="Exit Exam" 
+                           Style="{StaticResource NavigationButtonStyle}"
+                           Background="#F44336"
+                           Click="ExitButton_Click"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

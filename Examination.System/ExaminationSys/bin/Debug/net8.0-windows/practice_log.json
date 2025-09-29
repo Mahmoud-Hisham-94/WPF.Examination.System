@@ -1,0 +1,51 @@
+[
+  {
+    "$type": "TrueFalse",
+    "Header": "C# is an object-oriented language",
+    "Body": "Is this statement true or false?",
+    "Marks": 1,
+    "CorrectAnswers": [
+      "True"
+    ]
+  },
+  {
+    "$type": "ChooseOne",
+    "Choices": [
+      "London",
+      "Paris",
+      "Berlin",
+      "Madrid"
+    ],
+    "Header": "Capital of France",
+    "Body": "What is the capital of France?",
+    "Marks": 2,
+    "CorrectAnswers": [
+      "Paris"
+    ]
+  },
+  {
+    "$type": "ChooseAll",
+    "Choices": [
+      "2",
+      "4",
+      "5",
+      "9"
+    ],
+    "Header": "Prime numbers",
+    "Body": "Select all prime numbers",
+    "Marks": 3,
+    "CorrectAnswers": [
+      "2",
+      "5"
+    ]
+  },
+  {
+    "$type": "TrueFalse",
+    "Header": "cats",
+    "Body": "cats meow all the time",
+    "Marks": 1,
+    "CorrectAnswers": [
+      "False"
+    ]
+  }
+]

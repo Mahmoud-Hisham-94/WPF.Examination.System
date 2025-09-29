@@ -1,0 +1,25 @@
+[
+  {
+    "$type": "TrueFalse",
+    "Header": ".NET is cross-platform",
+    "Body": "True or false?",
+    "Marks": 1,
+    "CorrectAnswers": ["True"]
+  },
+  {
+    "$type": "ChooseOne",
+    "Header": "Largest planet",
+    "Body": "Which is the largest planet in our solar system?",
+    "Marks": 2,
+    "Choices": ["Earth", "Mars", "Jupiter", "Saturn"],
+    "CorrectAnswers": ["Jupiter"]
+  },
+  {
+    "$type": "ChooseAll",
+    "Header": "Programming paradigms",
+    "Body": "Select all programming paradigms supported by C#",
+    "Marks": 3,
+    "Choices": ["Object-oriented", "Functional", "Procedural", "Logic"],
+    "CorrectAnswers": ["Object-oriented", "Functional", "Procedural"]
+  }
+]

@@ -1,0 +1,246 @@
+<Window x:Class="ExaminationSys.ViewQuestionsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExaminationSys"
+        mc:Ignorable="d"
+        Title="View Questions" Height="700" Width="1000"
+        WindowStartupLocation="CenterOwner"
+        Background="#F5F5F5"
+        ResizeMode="NoResize">
+    
+    <Window.Resources>
+        <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#333"/>
+            <Setter Property="Margin" Value="0,0,0,15"/>
+        </Style>
+        
+        <Style x:Key="QuestionTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#333"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="0,0,0,5"/>
+        </Style>
+        
+        <Style x:Key="AnswerTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="#555"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="0,2"/>
+        </Style>
+        
+        <Style x:Key="CloseButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#2196F3"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Padding" Value="20,10"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                CornerRadius="6" 
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                            VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#1976D2"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#1565C0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#2E7D32" Padding="20">
+            <StackPanel>
+                <TextBlock Text="Examination Questions" 
+                          FontSize="24" 
+                          FontWeight="Bold" 
+                          Foreground="White" 
+                          HorizontalAlignment="Center"/>
+                <TextBlock Text="View all practice and final exam questions" 
+                          FontSize="14" 
+                          Foreground="#E8F5E8" 
+                          HorizontalAlignment="Center" 
+                          Margin="0,5,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Main Content -->
+        <ScrollViewer Grid.Row="1" Margin="20" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <!-- Practice Exam Questions -->
+                <TextBlock x:Name="PracticeHeader" 
+                          Text="PRACTICE EXAM QUESTIONS" 
+                          Style="{StaticResource HeaderTextStyle}"
+                          Foreground="#2E7D32"/>
+                
+                <ItemsControl x:Name="PracticeQuestionsControl" Margin="0,0,0,30">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="White" 
+                                   BorderBrush="#E0E0E0" 
+                                   BorderThickness="1" 
+                                   CornerRadius="4" 
+                                   Padding="15" 
+                                   Margin="0,0,0,10">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Header}" 
+                                              Style="{StaticResource QuestionTextStyle}"/>
+                                    <TextBlock Text="{Binding Body}" 
+                                              FontSize="12" 
+                                              Foreground="#666" 
+                                              TextWrapping="Wrap" 
+                                              Margin="0,5,0,10"/>
+                                    
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                        <TextBlock Text="Type: " 
+                                                  FontWeight="Bold" 
+                                                  FontSize="12"/>
+                                        <TextBlock Text="{Binding QuestionType}" 
+                                                  FontSize="12" 
+                                                  Foreground="#555"/>
+                                    </StackPanel>
+                                    
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                        <TextBlock Text="Marks: " 
+                                                  FontWeight="Bold" 
+                                                  FontSize="12"/>
+                                        <TextBlock Text="{Binding Marks}" 
+                                                  FontSize="12" 
+                                                  Foreground="#555"/>
+                                    </StackPanel>
+                                    
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                        <TextBlock Text="Choices: " 
+                                                  FontWeight="Bold" 
+                                                  FontSize="12"/>
+                                        <TextBlock Text="{Binding Choices}" 
+                                                  Style="{StaticResource AnswerTextStyle}"/>
+                                    </StackPanel>
+                                    
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Correct Answer: " 
+                                                  FontWeight="Bold" 
+                                                  FontSize="12"/>
+                                        <TextBlock Text="{Binding CorrectAnswer}" 
+                                                  FontSize="12" 
+                                                  Foreground="#4CAF50" 
+                                                  FontWeight="Bold"/>
+                                    </StackPanel>
+                                    <!-- Actions -->
+                                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                        <Button Content="Edit" Width="70" Margin="0,0,10,0" Click="EditButton_Click"/>
+                                        <Button Content="Delete" Width="70" Background="#e53935" Foreground="White" Click="DeleteButton_Click"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <!-- Final Exam Questions -->
+                <TextBlock x:Name="FinalHeader" 
+                          Text="FINAL EXAM QUESTIONS" 
+                          Style="{StaticResource HeaderTextStyle}"
+                          Foreground="#2E7D32"/>
+                
+                <ItemsControl x:Name="FinalQuestionsControl" Margin="0,0,0,30">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="White" 
+                                   BorderBrush="#E0E0E0" 
+                                   BorderThickness="1" 
+                                   CornerRadius="4" 
+                                   Padding="15" 
+                                   Margin="0,0,0,10">
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Header}" 
+                                              Style="{StaticResource QuestionTextStyle}"/>
+                                    <TextBlock Text="{Binding Body}" 
+                                              FontSize="12" 
+                                              Foreground="#666" 
+                                              TextWrapping="Wrap" 
+                                              Margin="0,5,0,10"/>
+                                    
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                        <TextBlock Text="Type: " 
+                                                  FontWeight="Bold" 
+                                                  FontSize="12"/>
+                                        <TextBlock Text="{Binding QuestionType}" 
+                                                  FontSize="12" 
+                                                  Foreground="#555"/>
+                                    </StackPanel>
+                                    
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                        <TextBlock Text="Marks: " 
+                                                  FontWeight="Bold" 
+                                                  FontSize="12"/>
+                                        <TextBlock Text="{Binding Marks}" 
+                                                  FontSize="12" 
+                                                  Foreground="#555"/>
+                                    </StackPanel>
+                                    
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                        <TextBlock Text="Choices: " 
+                                                  FontWeight="Bold" 
+                                                  FontSize="12"/>
+                                        <TextBlock Text="{Binding Choices}" 
+                                                  Style="{StaticResource AnswerTextStyle}"/>
+                                    </StackPanel>
+                                    
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Correct Answer: " 
+                                                  FontWeight="Bold" 
+                                                  FontSize="12"/>
+                                        <TextBlock Text="{Binding CorrectAnswer}" 
+                                                  FontSize="12" 
+                                                  Foreground="#4CAF50" 
+                                                  FontWeight="Bold"/>
+                                    </StackPanel>
+                                    <!-- Actions -->
+                                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                        <Button Content="Edit" Width="70" Margin="0,0,10,0" Click="EditButton_Click"/>
+                                        <Button Content="Delete" Width="70" Background="#e53935" Foreground="White" Click="DeleteButton_Click"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Close Button -->
+        <Border Grid.Row="2" Background="#E8F5E8" Padding="20">
+            <StackPanel HorizontalAlignment="Center">
+                <Button x:Name="CloseButton" 
+                       Content="Close" 
+                       Style="{StaticResource CloseButtonStyle}"
+                       Click="CloseButton_Click"
+                       Width="120"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
