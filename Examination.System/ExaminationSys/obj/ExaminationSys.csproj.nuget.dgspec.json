@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ITI Labs\\Advanced C# Labs\\Examination System Proj\\Examination.System\\ExaminationSys\\ExaminationSys.csproj": {}
+    "D:\\ITI Labs\\Advanced C# Labs\\Examination System Proj\\Git.ExaminationSystem\\WPF.Examination.System\\Examination.System\\ExaminationSys\\ExaminationSys.csproj": {}
   },
   "projects": {
-    "D:\\ITI Labs\\Advanced C# Labs\\Examination System Proj\\Examination.System\\ExaminationSys\\ExaminationSys.csproj": {
+    "D:\\ITI Labs\\Advanced C# Labs\\Examination System Proj\\Git.ExaminationSystem\\WPF.Examination.System\\Examination.System\\ExaminationSys\\ExaminationSys.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ITI Labs\\Advanced C# Labs\\Examination System Proj\\Examination.System\\ExaminationSys\\ExaminationSys.csproj",
+        "projectUniqueName": "D:\\ITI Labs\\Advanced C# Labs\\Examination System Proj\\Git.ExaminationSystem\\WPF.Examination.System\\Examination.System\\ExaminationSys\\ExaminationSys.csproj",
         "projectName": "ExaminationSys",
-        "projectPath": "D:\\ITI Labs\\Advanced C# Labs\\Examination System Proj\\Examination.System\\ExaminationSys\\ExaminationSys.csproj",
+        "projectPath": "D:\\ITI Labs\\Advanced C# Labs\\Examination System Proj\\Git.ExaminationSystem\\WPF.Examination.System\\Examination.System\\ExaminationSys\\ExaminationSys.csproj",
         "packagesPath": "C:\\Users\\mahmo\\.nuget\\packages\\",
-        "outputPath": "D:\\ITI Labs\\Advanced C# Labs\\Examination System Proj\\Examination.System\\ExaminationSys\\obj\\",
+        "outputPath": "D:\\ITI Labs\\Advanced C# Labs\\Examination System Proj\\Git.ExaminationSystem\\WPF.Examination.System\\Examination.System\\ExaminationSys\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -61,6 +61,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[8.0.21, 8.0.21]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[8.0.21, 8.0.21]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[8.0.21, 8.0.21]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[8.0.21, 8.0.21]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -69,7 +87,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
