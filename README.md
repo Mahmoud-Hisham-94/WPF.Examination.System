@@ -40,6 +40,46 @@ A comprehensive, modern examination management system built with **WPF** and **.
 - **Question Validation** - Ensures question integrity
 - **Export Capabilities** - Share question banks between systems
 
+## 📸 Screenshots
+
+### Main Interface
+<div align="center">
+<img src="Screenshots/Screenshot 2025-11-01 175856.png" alt="Role Selection Screen" width="700"/>
+<p><em>Role selection screen - Choose between Student and Teacher access</em></p>
+</div>
+
+### Student Experience
+<div align="center">
+<img src="Screenshots/Screenshot 2025-11-01 175918.png" alt="Student Dashboard" width="700"/>
+<p><em>Student dashboard with practice and final exam options</em></p>
+</div>
+
+<div align="center">
+<img src="Screenshots/Screenshot 2025-11-01 180005.png" alt="Exam Window" width="700"/>
+<p><em>Exam interface with timer, progress tracking, and question navigation</em></p>
+</div>
+
+<div align="center">
+<img src="Screenshots/Screenshot 2025-11-01 180227.png" alt="Exam Results" width="700"/>
+<p><em>Instant results display with detailed answer review</em></p>
+</div>
+
+### Teacher Dashboard
+<div align="center">
+<img src="Screenshots/Screenshot 2025-11-01 180412.png" alt="Teacher Main Menu" width="700"/>
+<p><em>Teacher main menu with exam management options</em></p>
+</div>
+
+<div align="center">
+<img src="Screenshots/Screenshot 2025-11-01 180504.png" alt="Teacher Dashboard" width="700"/>
+<p><em>Comprehensive teacher dashboard for question and exam management</em></p>
+</div>
+
+<div align="center">
+<img src="Screenshots/Screenshot 2025-11-01 180548.png" alt="Question Editor" width="700"/>
+<p><em>Intuitive question editor with multiple question type support</em></p>
+</div>
+
 ## 🚀 Quick Start
 
 ### Prerequisites
